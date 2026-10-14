@@ -1,0 +1,10 @@
+# 依赖与构建产物
+node_modules/
+lib/
+
+# 打包快照
+*.tgz
+
+# 系统文件
+.DS_Store
+Thumbs.db
