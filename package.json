@@ -1,0 +1,44 @@
+{
+  "name": "dsh-stock-quiz",
+  "version": "0.7.2",
+  "description": "股票学习工作台：知识测试、知识图谱与可扩展研究模块",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "check": "node --check src/index.js && node --check src/market-review.js && node --check src/client.js && node --check src/questions.js && node --check src/catalog.js && node --check src/extra-questions.js && node --check src/research.js && node --check src/research-components.js",
+    "test": "npm run build && node test/quiz.test.mjs",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0",
+    "react": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
